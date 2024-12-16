@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../foto/login.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.wrapper{
+    width: 420px;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline:none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+
+}
+.input-box ::placeholder{
+    color: #fff;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border:none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px;
+}
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
+
+#boeken {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#boeken td, #boken th {
+    border: 3px solid #000000;
+    padding: 6px;
+}
+
+#boeken tr:hover {
+    background-color: #595644;
+}
+
+#boeken th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #602644;
+    color: white;
+    border-radius: 3px;
+}
+.box{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    width: 100%;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 90px 90px;
+}
+button{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border:none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+.box .tvg{
+    align-items: right;
+    width: 90%;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+.box h1{
+    align-items: center;
+    margin-bottom: 30px;
+}
+.box .btn-lenen{
+    width: 100%;
+}
+.wrapper .tvgboek{
+    align-items: center;
+    width: 100%;
+}
+.page1 {
+    width: 800px;
+    height: 400px;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.page1 h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.page1 p{
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+.page1btn {
+    display: flex; /* Flexbox activeren */
+    flex-direction: column; /* Verticaal stapelen van de knoppen */
+    justify-content: center; /* Verticaal centreren */
+    align-items: center; /* Horizontaal centreren */
+    margin: 20px; /* Marges verwijderen */
+    width: 120px;
+    margin-left: 295px;
+}
+
+.navbar ul{
+    list-style-type: none;
+    background-color: #602644;
+    padding: 0px;
+    margin: 10px auto;
+    overflow: hidden;
+    width: 800px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+
+}
+.navbar a{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navbar a:hover{
+    background-color: #595644;
+    border-radius: 15px;
+}
+.navbar li{
+    float: left;
+}
+
+
+/* navbar aanpassen en toevoegen */
+.navbar2 {
+    display: flex; /* Zorgt ervoor dat de items flexibel worden */
+    justify-content: center; /* Centreert de items horizontaal */
+    align-items: center; /* Centreert de items verticaal binnen de navbar */
+    background-color: #370c5f;
+    height: 50px;
+    margin: 0 auto; /* Zorgt ervoor dat de navbar in het midden staat */
+    width: 80%; /* Past de breedte van de navbar aan */
+    border-radius: 25px; /* Ronde hoeken zoals in je voorbeeld */
+    position: relative;
+    top: -20px; /* Verplaats de navbar omhoog als dat nodig is */
+}
+
+.navbar2 ul {
+    display: flex; /* Zorgt ervoor dat de lijst horizontaal wordt */
+    list-style: none; /* Verwijdert de standaard opsommingstekens */
+    padding: 0;
+    margin: 0;
+}
+
+.navbar2 li {
+    margin: 0 10px; /* Voeg wat ruimte toe tussen de items */
+}
+
+.navbar2 a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.navbar2 a:hover {
+    background-color: #595644;
+    border-radius: 15px; /* Maak de hover-achtergrond afgerond */
+}
+/* navbar aanpassen en toevoegen */
+.wrapper .alert {
+    background-color: #f44336; /* Rood */
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.alert .close-btn:hover {
+    color: black;
+}
