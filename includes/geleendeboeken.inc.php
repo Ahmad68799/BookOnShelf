@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['role'])){
-    if($_SESSION['role'] != "klant"){
+    if($_SESSION['role'] != "user"){
         header('location: index.php?page=NoAccess');
         die();
     }

@@ -4,7 +4,7 @@ if(isset($_SESSION['role'])){
     if($_SESSION['role'] == 'admin'){
         include 'includes/navbar_admin.inc.php';
     }
-    if($_SESSION['role'] == 'klant'){
+    if($_SESSION['role'] == 'user'){
         include 'includes/navbar_klant.inc.php';
     }
 }else{

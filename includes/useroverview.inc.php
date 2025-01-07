@@ -16,5 +16,4 @@ $statement->execute();
 while($results = $statement->fetch(PDO::FETCH_ASSOC)){
     echo $results['userid'];
 }
-
 ?>
