@@ -1,10 +1,10 @@
 <?php
 
 if(isset($_SESSION['role'])){
-    if($_SESSION['role'] == 'admin'){
+    if($_SESSION['role'] == '2'){
         include 'includes/navbar_admin.inc.php';
     }
-    if($_SESSION['role'] == 'user'){
+    if($_SESSION['role'] == '1'){
         include 'includes/navbar_klant.inc.php';
     }
 }else{

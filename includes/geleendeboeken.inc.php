@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['role'])){
-    if($_SESSION['role'] != "user"){
+    if($_SESSION['role'] != "1"){
         header('location: index.php?page=NoAccess');
         die();
     }
@@ -9,8 +9,27 @@ if(isset($_SESSION['role'])){
     die();
 }
 ?>
+<?php
+include '../private/connection.php';
+
+
+$user_id = $_SESSION['userid'];
+
+$stmt = $pdo->prepare("
+    SELECT books.name, books.writer, books.genre, books.isbn_number, books.language, books.pages, books.copies
+FROM rented 
+ JOIN books ON rented.book_id = books.book_id 
+    WHERE rented.user_id = :user_id
+");
+
+$stmt->execute(['user_id' => $user_id]);
+$geleende_boeken = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <h1>Geleende Boeken</h1>
+<?php if (empty($geleende_boeken)): ?>
+    <p>Je hebt nog geen boeken geleend.</p>
+<?php else: ?>
 <table id="boeken">
     <tr>
         <th>Naam</th>
@@ -22,64 +41,17 @@ if(isset($_SESSION['role'])){
         <th>Aantal exemplaren</th>
         <th>Geleende boeken</th>
     </tr>
-    <td>Eclipse</td>
-    <td>Stephenie Meyer</td>
-    <td>Fantasy</td>
-    <td>06792</td>
-    <td>Engels</td>
-    <td>629</td>
-    <td>50</td>
-    <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-    </tr>
-    <tr>
-        <td>Hygge</td>
-        <td>Meik Wiking</td>
-        <td>Lifestyle</td>
-        <td>30371</td>
-        <td>Engels</td>
-        <td>288</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-    </tr>
-    <tr>
-        <td>Sapiens</td>
-        <td>Yuval Noah</td>
-        <td>Geschiedenis</td>
-        <td>231609</td>
-        <td>Engels</td>
-        <td>512</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-
-    </tr>
-    <tr>
-        <td>Ikigai</td>
-        <td>Francesc Miralles</td>
-        <td>Zelfhulp</td>
-        <td>313072</td>
-        <td>Japans</td>
-        <td>208</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-    </tr>
-    <tr>
-        <td>Gone</td>
-        <td>Michael Grant</td>
-        <td>Young Adult</td>
-        <td>144878</td>
-        <td>Engels</td>
-        <td>576</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-    </tr>
-    <tr>
-        <td>Zoo</td>
-        <td>James Patterson</td>
-        <td>Thriller</td>
-        <td>21114</td>
-        <td>Engels</td>
-        <td>416</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Terug geven</button></td>
-    </tr>
+    <?php foreach ($geleende_boeken as $boek): ?>
+        <tr>
+            <td> <?= htmlspecialchars($boek['name']) ?></td>
+            <td> <?= htmlspecialchars($boek['writer']) ?></td>
+            <td> <?= htmlspecialchars($boek['genre']) ?></td>
+            <td> <?= htmlspecialchars($boek['isbn_number']) ?></td>
+            <td> <?= htmlspecialchars($boek['language']) ?></td>
+            <td> <?= htmlspecialchars($boek['pages']) ?></td>
+            <td> <?= htmlspecialchars($boek['copies']) ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
 </table>
+<?php endif; ?>

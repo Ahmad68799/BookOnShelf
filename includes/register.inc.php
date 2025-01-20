@@ -4,37 +4,62 @@ if(isset($_SESSION['role'])){
     die();
 }
 ?>
-    <form action="">
+<form action="PHP/register.php" method="post">
+
+    <?php
+    // Succesmelding
+    if (isset($_SESSION['Success'])) {
+        echo '
+    <div class="Success">
+        <span onclick="this.parentElement.style.display=\'none\'"
+              class="close-btn">&times;</span>
+        <p>' . $_SESSION['Success'] . '</p>
+    </div>';
+        unset($_SESSION['Success']); // Verwijder de melding na het tonen
+    }
+
+    // Foutmelding voor e-mailadres
+    if (isset($_SESSION['em-error'])) {
+        echo '
+    <div class="alert">
+        <span onclick="this.parentElement.style.display=\'none\'"
+              class="close-btn">&times;</span>
+        <p>' . $_SESSION['em-error'] . '</p>
+    </div>';
+        unset($_SESSION['em-error']); // Verwijder de melding na het tonen
+    }
+    ?>
+
         <h1>Registreren</h1>
         <div class="input-box">
-            <input type="text" placeholder="Voornaam"required>
+            <input type="text" name="Voornaam" placeholder="Voornaam" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Tussenvoegsel">
+            <input type="text" name="Tussenvoegsel" placeholder="Tussenvoegsel">
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Achternaam"required>
+            <input type="text" name="Achternaam" placeholder="Achternaam" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Woonplaats"required>
+            <input type="text" name="Woonplaats" placeholder="Woonplaats" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Straat"required>
+            <input type="text" name="Straat" placeholder="Straat" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Huisnummer"required>
+            <input type="text" name="Huisnummer" placeholder="Huisnummer" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Postcode"required>
+            <input type="text" name="Postcode" placeholder="Postcode" required>
         </div>
         <div class="input-box">
-            <input type="email" placeholder="Email"required>
+            <input type="email" name="Email" placeholder="Email" required>
         </div>
         <div class="input-box">
-            <input type="text" placeholder="Wachtwoord"required>
+            <input type="text" name="Password" placeholder="Wachtwoord"  required>
         </div>
         <div class="input-box">
-            <input type="date" placeholder="Geboortedatum"required>
+            <input type="date" name="Geboortedatum" placeholder="Geboortedatum" required>
         </div>
         <button type="submit" class="btn">Registreren</button>
 

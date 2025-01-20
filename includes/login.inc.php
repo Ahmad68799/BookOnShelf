@@ -7,7 +7,7 @@ if(isset($_SESSION['role'])){
     <form action="PHP/login.php" method="post">
         <h1>Login</h1>
         <div class="input-box">
-            <input type="email" name="username" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="input-box">
             <input type="password" name="password" placeholder="Wachtwoord" required>

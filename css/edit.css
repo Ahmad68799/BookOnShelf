@@ -101,10 +101,11 @@ body{
 }
 .box{
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
-    height: 700px;
+    overflow-y: scroll;
+    height: 100vh;
     width: 100%;
     background:transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -112,7 +113,7 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #fff;
     border-radius: 10px;
-    padding: 90px 90px;
+    padding: 140px 90px 90px; /* Zorg dat er genoeg ruimte is bovenaan voor de navbar */
 }
 button{
     width: 100%;
@@ -213,20 +214,29 @@ button{
     display: flex; /* Zorgt ervoor dat de items flexibel worden */
     justify-content: center; /* Centreert de items horizontaal */
     align-items: center; /* Centreert de items verticaal binnen de navbar */
-    background-color: #370c5f;
+    background-color: #602644FF;
     height: 50px;
     margin: 0 auto; /* Zorgt ervoor dat de navbar in het midden staat */
-    width: 80%; /* Past de breedte van de navbar aan */
+    /width: 80%; /* Past de breedte van de navbar aan */
     border-radius: 25px; /* Ronde hoeken zoals in je voorbeeld */
     position: relative;
     top: -20px; /* Verplaats de navbar omhoog als dat nodig is */
+
 }
 
 .navbar2 ul {
-    display: flex; /* Zorgt ervoor dat de lijst horizontaal wordt */
-    list-style: none; /* Verwijdert de standaard opsommingstekens */
-    padding: 0;
-    margin: 0;
+    list-style-type: none;
+    background-color: #602644;
+    padding: 0px;
+    margin: 10px auto;
+    overflow: hidden;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+
 }
 
 .navbar2 li {
@@ -246,24 +256,27 @@ button{
     border-radius: 15px; /* Maak de hover-achtergrond afgerond */
 }
 /* navbar aanpassen en toevoegen */
-.wrapper .alert {
-    background-color: #f44336; /* Rood */
-    color: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 4px;
-    position: relative;
+
+
+.wrapper .Success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
+
+.wrapper .alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
     color: white;
-    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    float: right;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-}
-.alert .close-btn:hover {
-    color: black;
 }

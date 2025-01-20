@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['role'])){
-    if($_SESSION['role'] != "user"){
+    if($_SESSION['role'] != "1"){
         header('location: index.php?page=NoAccess');
         die();
     }
@@ -9,7 +9,14 @@ if(isset($_SESSION['role'])){
     die();
 }
 ?>
+<?php
+include '../private/connection.php';
 
+$sql = "SELECT * FROM books";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+
+?>
 <h1>gereserveerde Boeken</h1>
 <table id="boeken">
     <tr>
@@ -22,64 +29,17 @@ if(isset($_SESSION['role'])){
         <th>Aantal exemplaren</th>
         <th>Annuleren reseveren</th>
     </tr>
-    <td>Eclipse</td>
-    <td>Stephenie Meyer</td>
-    <td>Fantasy</td>
-    <td>06792</td>
-    <td>Engels</td>
-    <td>629</td>
-    <td>50</td>
-    <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
-    </tr>
+    <?php
+    while($result = $statement->fetch(PDO::FETCH_ASSOC)){ ?>
     <tr>
-        <td>Hygge</td>
-        <td>Meik Wiking</td>
-        <td>Lifestyle</td>
-        <td>30371</td>
-        <td>Engels</td>
-        <td>288</td>
-        <td>50</td>
+        <td> <?= htmlspecialchars($result['name']) ?></td>
+        <td> <?= htmlspecialchars($result['writer']) ?></td>
+        <td> <?= htmlspecialchars($result['genre']) ?></td>
+        <td> <?= htmlspecialchars($result['isbn_number']) ?></td>
+        <td> <?= htmlspecialchars($result['language']) ?></td>
+        <td> <?= htmlspecialchars($result['pages']) ?></td>
+        <td> <?= htmlspecialchars($result['copies']) ?></td>
         <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
-    </tr>
-    <tr>
-        <td>Sapiens</td>
-        <td>Yuval Noah</td>
-        <td>Geschiedenis</td>
-        <td>231609</td>
-        <td>Engels</td>
-        <td>512</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
-
-    </tr>
-    <tr>
-        <td>Ikigai</td>
-        <td>Francesc Miralles</td>
-        <td>Zelfhulp</td>
-        <td>313072</td>
-        <td>Japans</td>
-        <td>208</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
-    </tr>
-    <tr>
-        <td>Gone</td>
-        <td>Michael Grant</td>
-        <td>Young Adult</td>
-        <td>144878</td>
-        <td>Engels</td>
-        <td>576</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
-    </tr>
-    <tr>
-        <td>Zoo</td>
-        <td>James Patterson</td>
-        <td>Thriller</td>
-        <td>21114</td>
-        <td>Engels</td>
-        <td>416</td>
-        <td>50</td>
-        <td><button type="submit" class="btn-lenen">Annuleren reseveren</button></td>
+        <?php } ?>
     </tr>
 </table>
