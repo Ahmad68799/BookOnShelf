@@ -88,7 +88,7 @@ body{
 }
 
 #boeken tr:hover {
-    background-color: #595644;
+    background-color: #234650;
 }
 
 #boeken th {
@@ -201,7 +201,7 @@ button{
     font-size: 17px;
 }
 .navbar a:hover{
-    background-color: #595644;
+    background-color: #234650;
     border-radius: 15px;
 }
 .navbar li{
@@ -252,13 +252,13 @@ button{
 }
 
 .navbar2 a:hover {
-    background-color: #595644;
+    background-color: #234650;
     border-radius: 15px; /* Maak de hover-achtergrond afgerond */
 }
 /* navbar aanpassen en toevoegen */
 
 
-.wrapper .Success {
+.wrapper .Success1 {
     background-color: #d4edda;
     color: #155724;
     padding: 10px;
@@ -267,11 +267,13 @@ button{
     border-radius: 5px;
 }
 
-.wrapper .alert {
-    padding: 20px;
-    background-color: #f44336; /* Red */
-    color: white;
+.wrapper .alert1 {
+    background-color: #f4afaf;
+    color: #f44336;
+    padding: 10px;
+    border: 1px solid #f4afaf;
     margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .close-btn {
@@ -279,4 +281,39 @@ button{
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+}
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.Success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 20px;
+    right: 20px; /* Zorgt ervoor dat het van rechts komt */
+    animation: slideInRight 0.5s ease-out;
+}
+.alert {
+    background-color: #f4afaf;
+    color: #f44336;
+    padding: 10px;
+    border: 1px solid #f4afaf;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 20px;
+    right: 20px; /* Zorgt ervoor dat het van rechts komt */
+    animation: slideInRight 0.5s ease-out;
 }

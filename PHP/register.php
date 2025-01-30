@@ -16,13 +16,24 @@ $password = $_POST["Password"];
 $birth = $_POST["Geboortedatum"];
 $role = 1; // Standaardrol
 
+if ($house_number < 0 || $zip_code < 0) {
+    $_SESSION['alert'] = 'Huisnummer en Postcode mogen niet negatief zijn!';
+    header('Location: ../index.php?page=register');
+    exit;
+}
 
+$currentDate = date('Y-m-d');
+if ($birth >= $currentDate) {
+    $_SESSION['alert'] = 'Geboortedatum mag niet in de toekomst liggen!';
+    header('location: ../index.php?page=register');
+    exit;
+}
 // Controleer of het e-mailadres al bestaat
 $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([':email' => $email]);
 if ($stmt->fetchColumn() > 0) {
-    $_SESSION['em-error'] = 'E-mail al in gebruik!';
+    $_SESSION['alert'] = 'E-mail al in gebruik!';
     header('location: ../index.php?page=register');
     exit;
 }
@@ -53,7 +64,7 @@ try {
     ]);
 
     // Succesbericht opslaan in sessie
-    $_SESSION['Success'] = "Registratie succesvol! U kunt nu inloggen.";
+    $_SESSION['Success1'] = "Registratie succesvol! U kunt nu inloggen.";
     header('Location: ../index.php?page=register');
     exit;
 } catch (PDOException $e) {

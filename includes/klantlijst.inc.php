@@ -15,8 +15,30 @@ include '../private/connection.php';
 $sql = "SELECT * FROM books";
 $statement = $pdo->prepare($sql);
 $statement->execute();
-
 ?>
+<?php
+if (isset($_SESSION['Success1'])) {
+    echo '
+    <div class="Success">
+        <span onclick="this.parentElement.style.display=\'none\'"
+              class="close-btn">&times;</span>
+        <p>' . $_SESSION['Success1'] . '</p>
+    </div>';
+    unset($_SESSION['Success1']); // Verwijder de melding na het tonen
+}
+?>
+<?php
+if (isset($_SESSION['alert'])) {
+    echo '
+    <div class="alert">
+        <span onclick="this.parentElement.style.display=\'none\'"
+              class="close-btn">&times;</span>
+        <p>' . $_SESSION['alert'] . '</p>
+    </div>';
+    unset($_SESSION['alert']); // Verwijder de melding na het tonen
+}
+?>
+
 <h1>Welkom bij Book On Shelf</h1>
 <table id="boeken">
     <tr>
@@ -43,12 +65,14 @@ while($result = $statement->fetch(PDO::FETCH_ASSOC)){ ?>
 
     <td>
     <?php if ($result['copies'] > 0): ?>
-        <form method="POST" action="geleendeboeken.php">
+        <form action="PHP/geleendeboeken.php" method="POST" >
             <input type="hidden" name="book_id" value="<?= $result['book_id'] ?>">
             <button type="submit" class="btn-lenen">Lenen</button>
         </form>
     <?php else: ?>
-        <button class="btn-reserveren" disabled>Reserveren</button>
+        <form action="PHP/gereserveerdeboeken.php" method="POST">
+            <input type="hidden" name="book_id" value="<?= $result['book_id'] ?>">
+            <button type="submit" class="btn-reserveren">Reserveren</button>
     <?php endif; ?>
     </td>
 

@@ -17,6 +17,17 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 
 ?>
+<?php
+if (isset($_SESSION['Success1'])) {
+    echo '
+    <div class="Success">
+        <span onclick="this.parentElement.style.display=\'none\'"
+              class="close-btn">&times;</span>
+        <p>' . $_SESSION['Success1'] . '</p>
+    </div>';
+    unset($_SESSION['Success1']); // Verwijder de melding na het tonen
+}
+?>
 <table id="boeken">
     <tr>
         <th>Naam</th>
@@ -30,6 +41,7 @@ $statement->execute();
             <button onclick="window.location.href='index.php?page=toevoegen'" class="tvg">Toevoegen</button>
         </th>
     </tr>
+
 
     <?php
     while($result = $statement->fetch(PDO::FETCH_ASSOC)){ ?>
@@ -48,10 +60,17 @@ $statement->execute();
             </button>
         </td>
         <td>
-            <button onclick="window.location.href='PHP/verwijderen.php?book_id=<?= htmlspecialchars($result['book_id']) ?>';">
+            <button onclick="confirmDelete(<?= htmlspecialchars($result['book_id']) ?>);">
                 Verwijderen
             </button>
         </td>
         <?php } ?>
     </tr>
 </table>
+<script>
+    function confirmDelete(bookId) {
+        if (confirm("Weet je zeker dat je dit boek wilt verwijderen?")) {
+            window.location.href = 'PHP/verwijderen.php?book_id=' + bookId;
+        }
+    }
+</script>

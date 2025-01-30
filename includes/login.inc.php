@@ -19,13 +19,13 @@ if(isset($_SESSION['role'])){
         </div>
     </form>
 <?php
-if (isset($_SESSION['error'])) {
+if (isset($_SESSION['alert'])) {
     echo '
-<div class="alert">
+<div class="alert1">
         <span onclick="this.parentElement.style.display=\'none\'"
               class="close-btn">&times;</span>
-    <p>' . $_SESSION['error'] . '</p>
+    <p>' . $_SESSION['alert'] . '</p>
 </div>';
-    unset($_SESSION['error']); // Verwijder de foutmelding na het tonen
+    unset($_SESSION['alert']); // Verwijder de foutmelding na het tonen
 }
 ?>

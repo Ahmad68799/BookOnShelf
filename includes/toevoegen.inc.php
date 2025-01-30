@@ -22,40 +22,47 @@ if (isset($_SESSION['Success'])) {
     unset($_SESSION['Success']); // Verwijder de melding na het tonen
 }
 
-// Foutmelding voor e-mailadres
-if (isset($_SESSION['em-error'])) {
+
+if (isset($_SESSION['alert'])) {
     echo '
-    <div class="alert">
+    <div class="alert1">
         <span onclick="this.parentElement.style.display=\'none\'"
               class="close-btn">&times;</span>
-        <p>' . $_SESSION['em-error'] . '</p>
+        <p>' . $_SESSION['alert'] . '</p>
     </div>';
-    unset($_SESSION['em-error']); // Verwijder de melding na het tonen
+    unset($_SESSION['alert']); // Verwijder de melding na het tonen
 }
 ?>
 
 <form action="PHP/toevoegen.php"method="post">
     <h1>Toevoegen</h1>
     <div class="input-box">
-        <input type="text" name="naam" placeholder="Naam"required>
+        <label>Naam</label>
+        <input type="text" name="naam" required>
     </div>
     <div class="input-box">
-        <input type="text" name="schrijver" placeholder="Schrijver">
+        <label>Schrijver</label>
+        <input type="text" name="schrijver" >
     </div>
     <div class="input-box">
-        <input type="text" name="genre" placeholder="Genre"required>
+        <label>Genre</label>
+        <input type="text" name="genre" required>
     </div>
     <div class="input-box">
-        <input type="text" name="isbn" placeholder="ISBN-nummer"required>
+        <label>ISBN-nummer</label>
+        <input type="text" name="isbn" required>
     </div>
     <div class="input-box">
-        <input type="text" name="taal" placeholder="Taal"required>
+        <label>Taal</label>
+        <input type="text" name="taal" required>
     </div>
     <div class="input-box">
-        <input type="number" name="paginas" placeholder="Aantal pagina's"required>
+        <label>Aantal pagina's</label>
+        <input type="number" name="paginas" required>
     </div>
     <div class="input-box">
-        <input type="number" name="aantal" placeholder="Aantal exemplaren"required>
+        <label>Aantal exemplaren</label>
+        <input type="number" name="aantal" required>
     </div>
     <button type="submit" class="tvgboek">Toevoegen</button>
 </form>
